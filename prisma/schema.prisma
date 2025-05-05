@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../dev.db"
+}
+
+model Item {
+  c2cItemsId      BigInt       @id
+  c2cItemsName    String
+  isMyPublish     Boolean
+  paymentTime     Int
+  price           Int
+  showMarketPrice String
+  showPrice       String
+  totalItemsCount Int
+  type            Int
+  uface           String
+  uid             String
+  uname           String
+  uspaceJumpUrl   String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  details         ItemDetail[]
+}
+
+model Detail {
+  skuId       BigInt       @id
+  blindBoxId  BigInt
+  img         String
+  isHidden    Boolean
+  itemsId     BigInt
+  marketPrice Int
+  name        String
+  type        Int
+  items       ItemDetail[]
+}
+
+model ItemDetail {
+  c2cItemsId BigInt
+  skuId      BigInt
+
+  Item   Item   @relation(fields: [c2cItemsId], references: [c2cItemsId])
+  Detail Detail @relation(fields: [skuId], references: [skuId])
+
+  @@id([c2cItemsId, skuId])
+}
