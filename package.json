@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "fetch": "node index.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.52.0",
+    "terminal-link": "^4.0.0"
+  }
+}
