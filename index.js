@@ -17,9 +17,7 @@ if (cookies) {
 }
 
 const loginPage = await loginContext.newPage();
-await loginPage.goto("https://www.bilibili.com/", {
-  waitUntil: "domcontentloaded",
-});
+await loginPage.goto("https://www.bilibili.com/");
 
 const avatar = loginPage.locator(".header-avatar-wrap--container .v-img");
 
@@ -75,10 +73,7 @@ page.on("response", async (response) => {
 
 // 4️⃣ 访问目标网站
 await page.goto(
-  "https://mall.bilibili.com/neul-next/index.html?page=magic-market_index",
-  {
-    waitUntil: "domcontentloaded",
-  }
+  "https://mall.bilibili.com/neul-next/index.html?page=magic-market_index"
 );
 
 try {
